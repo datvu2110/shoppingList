@@ -9,6 +9,7 @@ function deleteBox(e){
 }
 
 function addBox(e){
+  e.preventDefault();
 	if (input.value.length > 0){
 		ul.insertAdjacentHTML('afterbegin', `<li>
         <span class="shopping-item">${input.value}</span>
@@ -25,13 +26,13 @@ function addBox(e){
 	}
 	
 }
-
-document.getElementById("shoppingList").addEventListener("click",deleteBox);
-document.getElementById("enter").addEventListener("click", addBox);
-document.getElementById("enter").addEventListener("keypress",function (e){
-  if (e.keyCode ===13){
-    deleteBox(e);
-  }
-});
-let ul = document.getElementById("shoppingList");
+let btn =  document.getElementsByClassName("shopping-item-delete")
+for (let i =0; i<btn.length; i++){
+  this.addEventListener("click", deleteBox);
+}
+let ul = document.getElementsByClassName("shopping-list")[0];
+let enter = document.querySelector('#js-shopping-list-form button');
+enter.addEventListener("click", addBox);
 let input = document.getElementById("shopping-list-entry");
+
+
